@@ -13,7 +13,7 @@ export default function App() {
   const [favorites, setFavorites] = useState(() => {
     const raw = localStorage.getItem('favorites');
     return raw ? JSON.parse(raw) : [];
-  });
+  })
 
   useEffect(() => {
     setMovies(moviesData); // carrega do JSON local
