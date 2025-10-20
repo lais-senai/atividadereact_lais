@@ -1,0 +1,127 @@
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0b0c10; 
+  color: #c5c6c7;
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0c10; 
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #45a29e;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #1f2833;
+  box-shadow: 0 0 10px #66fcf1, 0 0 20px #45a29e;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #c5c6c7;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px #66fcf1, 0 0 30px #45a29e;
+}
+
+.card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #45a29e;
+  box-shadow: 0 0 10px #66fcf1;
+}
+
+.topbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  color: #66fcf1;
+  font-weight: 600;
+  text-shadow: 0 0 5px #45a29e;
+}
+
+.button {
+  padding: 8px 12px;
+  border: 1.5px solid #45a29e;
+  background: transparent;
+  color: #66fcf1;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  text-shadow: 0 0 5px #66fcf1;
+}
+
+.button:hover {
+  background-color: #45a29e;
+  color: #0b0c10;
+  box-shadow: 0 0 8px #66fcf1, 0 0 15px #45a29e;
+}
+
+.badge {
+  font-size: 12px;
+  background: #f2c94c;
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: #1f2833;
+  font-weight: 700;
+  box-shadow: 0 0 10px #f2c94c;
+  user-select: none;
+}
+
+.favs {
+  margin-left: auto;
+  color: #f2c94c;
+  font-weight: 700;
+  text-shadow: 0 0 8px #f2c94c;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 12, 16, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #1f2833;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 20px #45a29e, 0 0 40px #66fcf1;
+  color: #c5c6c7;
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #45a29e;
+  box-shadow: 0 0 15px #66fcf1;
+  margin-bottom: 16px;
+}
