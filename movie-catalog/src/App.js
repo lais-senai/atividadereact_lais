@@ -5,10 +5,10 @@ import MovieModal from './componentes/MovieModal';
 import moviesData from './data/movies.json';
 import './styles.css';
 
-
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [term, setTerm] = useState('');
+  const [yearFilter, setYearFilter] = useState('');
   const [selected, setSelected] = useState(null);
   const [favorites, setFavorites] = useState(() => {
     const raw = localStorage.getItem('favorites');
@@ -24,11 +24,14 @@ export default function App() {
   }, [favorites]);
 
   const filtered = useMemo(() => {
-    if (!term) return movies;
-    return movies.filter(m =>
-      m.Title.toLowerCase().includes(term.toLowerCase())
-    );
-  }, [term, movies]);
+    // converte para número para comparação mais segura
+    const year = Number(yearFilter);
+    return movies.filter(m => {
+      const matchesTitle = m.Title.toLowerCase().includes(term.toLowerCase());
+      const matchesYear = yearFilter ? (!isNaN(year) && Number(m.Year) === year) : true;
+      return matchesTitle && matchesYear;
+    });
+  }, [term, yearFilter, movies]);
 
   function handleSearch(t) {
     setTerm(t);
@@ -53,6 +56,16 @@ export default function App() {
 
       <SearchBar onSearch={handleSearch} />
 
+      <div style={{ marginBottom: 16 }}>
+        <input
+          type="text"
+          placeholder="Filtrar por ano"
+          value={yearFilter}
+          onChange={e => setYearFilter(e.target.value)}
+          style={{ padding: 8, borderRadius: 4, border: '1px solid #ddd' }}
+        />
+      </div>
+
       <div className="grid">
         {filtered.map(movie => (
           <MovieCard
@@ -69,4 +82,3 @@ export default function App() {
     </div>
   );
 }
-
